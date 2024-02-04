@@ -37,7 +37,7 @@ const Cart = () => {
       };
 
       const response = await fetch(
-        "http://localhost:4000/api/checkout",
+        "https://flipkart-backend-two.vercel.app/api/checkout",
         options
       );
 
