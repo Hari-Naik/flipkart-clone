@@ -7,7 +7,7 @@ const stripe = require("stripe")(process.env.SECERET_KEY);
 const app = express();
 app.use(cors(
   {
-    origin: ["https://flipkart-clone-taupe.vercel.app/"],
+    origin: ["https://flipkart-clone-taupe.vercel.app"],
   }
 ));
 app.use(express.static("public"));
