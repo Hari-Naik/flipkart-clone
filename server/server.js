@@ -5,7 +5,11 @@ require("dotenv").config();
 const stripe = require("stripe")(process.env.SECERET_KEY);
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://flipkart-clone-taupe.vercel.app"],
+  })
+);
 app.use(express.static("public"));
 app.use(express.json());
 
@@ -27,13 +31,13 @@ app.post("/api/checkout", async (req, res) => {
     payment_method_types: ["card"],
     line_items: lineItems,
     mode: "payment",
-    success_url: "http://localhost:3004/orders",
-    cancel_url: "http://localhost:3004/cart",
+    success_url: "https://flipkart-clone-taupe.vercel.app/success",
+    cancel_url: "https://flipkart-clone-taupe.vercel.app/cart",
   });
 
   res.json({ id: session.id });
 });
 
-app.listen("4000", () => {
+app.listen(process.env.PORT, () => {
   console.log("listening on port 4000");
 });
