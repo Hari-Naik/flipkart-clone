@@ -45,4 +45,4 @@ app.post("/api/checkout", async (req, res) => {
   console.log("listening on port 4000");
 });
 
-
+module.exports = app;
