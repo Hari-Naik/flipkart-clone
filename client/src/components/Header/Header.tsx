@@ -16,7 +16,7 @@ const Header = () => {
     dispatch(setLoginModal(true));
   };
   return (
-    <header className="w-full flex flex-col bg-[#2874f0] sticky top-0 z-50 py-2 px-4 md:pl-[12%] lg:pr-[12%] ">
+    <header className="w-full flex flex-col bg-[#2874f0] sticky top-0 z-50 py-2 px-4 md:px-[6%]  ">
       {/* logo */}
       <div className="w-full flex items-center justify-between sm:justify-normal">
         <div className="flex-auto flex items-center gap-3">

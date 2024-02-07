@@ -4,7 +4,7 @@ import NavItem from "./NavItem";
 const navItmes = [
   {
     id: 1,
-    text: "Store",
+    text: "Shop",
     image:
       "https://res.cloudinary.com/dgwmfee0i/image/upload/v1692809399/icons8-small-business-96_cna6rj.png",
   },
@@ -60,7 +60,7 @@ const navItmes = [
 
 const Navbar = () => {
   return (
-    <nav className="w-full bg-white shadow-sm py-2 px-2 md:px-[10%] overflow-hidden overflow-x-auto">
+    <nav className="w-full bg-white shadow-sm py-2 px-2 md:px-[6%] xl:px-[9%] overflow-hidden overflow-x-auto">
       <ul className="w-full flex items-center space-x-6 lg:space-x-11">
         {navItmes.map(item => (
           <NavItem key={item.id} text={item.text} image={item.image} />

@@ -7,12 +7,12 @@ import Cart from "./pages/Cart";
 import Products from "./pages/Products";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
 import { getProducts } from "./features/products/productsSlice";
-import Success from "./components/Cart/Success";
-import { Cancel } from "@mui/icons-material";
+
 import LoginModal from "./components/Login/Login";
 import Wishlist from "./pages/Wishlist";
-import Orders from "./pages/Orders";
+import Success from "./pages/Success";
 import NotFound from "./pages/NotFound";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -25,7 +25,7 @@ function App() {
 
   return (
     <>
-      <main className="h-screen w-screen bg-[#f1f2f4] overflow-hidden overflow-y-auto pb-4">
+      <main className="h-screen w-screen bg-[#f1f2f4] overflow-hidden overflow-y-auto">
         <BrowserRouter>
           <Header />
           <Routes>
@@ -34,10 +34,11 @@ function App() {
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/wishlist" element={<Wishlist />} />
-            <Route path="/cancel" element={<Cancel />} />
+            <Route path="/success" element={<Success />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           {showLoginModal && <LoginModal />}
+          <Footer />
         </BrowserRouter>
       </main>
     </>
