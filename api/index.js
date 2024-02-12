@@ -40,9 +40,6 @@ app.post("/api/checkout", async (req, res) => {
   res.json({ id: session.id });
 });
 
-
-  app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log("listening on port 4000");
 });
-
-module.exports = app;
