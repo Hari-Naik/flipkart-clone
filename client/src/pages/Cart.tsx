@@ -37,7 +37,7 @@ const Cart = () => {
       };
 
       const response = await fetch(
-        "https://flipkart-backend-seven.vercel.app/api/checkout",
+        "https://flipkart-backend-chi.vercel.app/api/checkout",
         options
       );
 
