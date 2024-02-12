@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Header from "./components/Header/Header";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
-import Products from "./pages/Products";
+
 import { useAppDispatch, useAppSelector } from "./app/hooks";
 import { getProducts } from "./features/products/productsSlice";
 
@@ -13,6 +13,7 @@ import Wishlist from "./pages/Wishlist";
 import Success from "./pages/Success";
 import NotFound from "./pages/NotFound";
 import Footer from "./components/Footer/Footer";
+import ProductsPage from "./pages/ProductsPage";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -30,7 +31,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
+            <Route path="/products" element={<ProductsPage />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/wishlist" element={<Wishlist />} />

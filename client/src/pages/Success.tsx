@@ -1,9 +1,16 @@
+import Cookies from "js-cookie";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const Success = () => {
+  const token = Cookies.get("token");
+
+  if (!token) {
+    return <Navigate to={"/"} />;
+  }
+
   return (
-    <div className="w-full h-[90%] flex flex-col items-center justify-center overflow-hidden">
+    <div className="w-full h-full flex flex-col items-center justify-center overflow-hidden">
       <h1 className="text-xl text-[#0d993c]">
         Order has been placed successfully!
       </h1>

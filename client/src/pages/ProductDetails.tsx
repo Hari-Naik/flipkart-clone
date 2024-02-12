@@ -79,7 +79,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <section className="w-[95%] md:w-[98%] lg:w-[90%] flex flex-col md:flex-row  gap-4 bg-white p-3 mx-auto mt-4">
+    <section className="w-[95%] h-full md:w-[98%] lg:w-[90%] flex flex-col md:flex-row  gap-4 bg-white p-3 mx-auto mt-4">
       <div className="w-full h-max md:w-[50%] lg:w-[35%] flex flex-col items-center">
         <div className="h-[370px] w-full lg:h-[470px] flex shadow-sm">
           <div className="flex flex-col m-3 gap-2">

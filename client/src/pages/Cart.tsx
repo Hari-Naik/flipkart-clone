@@ -58,7 +58,7 @@ const Cart = () => {
   };
 
   return (
-    <main className="flex flex-col items-center md:flex-row md:justify-center md:items-start md:space-x-4 overflow-hidden overflow-y-auto pt-6">
+    <main className="w-full h-full flex flex-col items-center md:flex-row md:justify-center md:items-start md:space-x-4 overflow-hidden overflow-y-auto pt-6">
       {cart.length ? (
         <>
           <ul className="w-[96%] md:w-[60%] h-max bg-white shadow-sm">

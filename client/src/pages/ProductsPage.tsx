@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import ProductItem from "../components/Products/ProductItem";
 import Filters from "../components/Filters/Filters";
 import Loading from "../components/Products/Loading";
 import { fetchProducts } from "../features/products/productsApi";
@@ -8,24 +7,32 @@ import { productType } from "../Types";
 import LoadingModal from "../components/Modal/LoadingModal";
 import Pagination from "../components/Pagination/Pagination";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
+import { useSearchParams } from "react-router-dom";
+import SortBy from "../components/Products/SortBy";
+import Products from "../components/Products/Products";
 
-const sortBy = [
+export const sortBy = [
   { id: "LH", text: "Low to High" },
   { id: "HL", text: "High to Low" },
 ];
 
-const Products = () => {
+const ProductsPage = () => {
   const [products, setProducts] = useState<productType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [showLoadingModal, setShowLoadingModal] = useState<boolean>(false);
-
   const [sortId, setSortId] = useState(sortBy[0].id);
-  const [page, setPage] = useState<number>(1);
+
+  const [searchParams] = useSearchParams();
+  const page = searchParams.get("page") || 1;
+
+  useEffect(() => {
+    getProducts();
+  }, [page]);
 
   const getProducts = async () => {
     setLoading(true);
     const products = await fetchProducts(
-      `https://dummyjson.com/products?limit=10&skip=${page * 10 - 10}`
+      `https://dummyjson.com/products?limit=10&skip=${+page * 10 - 10}`
     );
     sortProducts("LH", products);
   };
@@ -59,16 +66,12 @@ const Products = () => {
     setSortId(id);
   };
 
-  useEffect(() => {
-    getProducts();
-  }, [page]);
-
   if (loading) {
     return <Loading />;
   }
 
   return (
-    <main className="h-full w-full flex space-x-2 p-2">
+    <main className="flex space-x-2 p-2">
       <Filters
         sortProductsByCategory={sortProductsByCategory}
         sortProductsByRating={sortProductsByRating}
@@ -79,27 +82,9 @@ const Products = () => {
         <h2 className="text-base text-[#212121] font-semibold my-1">
           All Products
         </h2>
-        <div className="flex items-center space-x-4 text-sm text-[#212121]">
-          <p className="font-semibold cursor-pointer pb-1">Sort By</p>
-          {sortBy.map(item => (
-            <p
-              key={item.id}
-              onClick={() => sortProducts(item.id)}
-              className={`cursor-pointer pb-1 transition ${
-                sortId === item.id
-                  ? "text-[#2874f0] border-[#2874f0] border-b-2 font-semibold"
-                  : ""
-              }`}>
-              Price-- {item.text}
-            </p>
-          ))}
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
-          {products.map(product => (
-            <ProductItem key={product.id} product={product} />
-          ))}
-        </div>
-        <Pagination page={page} setPage={setPage} />
+        <SortBy sortId={sortId} sortProducts={sortProducts} />
+        <Products products={products} />
+        <Pagination page={+page} />
       </section>
 
       <LoadingModal showLoadingModal={showLoadingModal} />
@@ -107,4 +92,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsPage;

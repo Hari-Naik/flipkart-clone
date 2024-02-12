@@ -12,7 +12,7 @@ const Home = () => {
   if (loading) return <Loading />;
 
   return (
-    <>
+    <main>
       <Navbar />
       <Banner />
       <Slider title="Best of Electronics" start={0} end={11} />
@@ -21,7 +21,7 @@ const Home = () => {
       <Slider title="Fashion Best Sellers" start={38} end={60} />
       <Slider title="Top Deals On Watches & Bags" start={60} end={86} />
       <Slider title="Automotive, Motorcycle & Lighting" start={86} end={100} />
-    </>
+    </main>
   );
 };
 

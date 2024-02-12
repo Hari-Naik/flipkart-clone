@@ -7,7 +7,7 @@ type Props = {
 };
 
 const EmptyCartView: React.FC<Props> = ({ title, description }) => (
-  <div className="w-[90%] h-max flex flex-col items-center justify-center bg-white shadow-sm mt-10 mx-auto py-6">
+  <div className="w-[90%] h-[70%] flex flex-col items-center justify-center bg-white shadow-sm mt-10 mx-auto py-6">
     <img
       className=" h-48"
       src="https://rukminim2.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
