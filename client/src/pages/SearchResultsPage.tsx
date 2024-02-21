@@ -29,7 +29,7 @@ const SearchResultsPage = () => {
 
   const EmptyView = () => {
     return (
-      <div className="w-full h-[75vh] sm:h-[74vh] flex flex-col items-center justify-center m-2">
+      <div className="w-full h-[75vh] sm:h-[calc(100vh-150px)] flex flex-col items-center justify-center m-2">
         <img
           src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/error-no-search-results_2353c5.png"
           alt="error-no-search-results"
