@@ -5,6 +5,7 @@ import { productType } from "../../Types";
 
 import _debounce from "lodash/debounce";
 import { fetchProducts } from "../../features/products/productsApi";
+import { useNavigate } from "react-router";
 
 interface SearchPropTypes {
   mobile?: boolean;
@@ -15,7 +16,9 @@ const Search: React.FC<SearchPropTypes> = ({ mobile }) => {
   const [suggestions, setSuggestions] = useState<productType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const fetchSuggestions = async (query: string) => {
+  const navigate = useNavigate();
+
+  const fetchSuggestions = async () => {
     setLoading(true);
     const suggestions = await fetchProducts(
       `https://dummyjson.com/products/search?q=${query}`
@@ -25,14 +28,20 @@ const Search: React.FC<SearchPropTypes> = ({ mobile }) => {
     setLoading(false);
   };
 
-  const debounceFetchSuggestions = _debounce((query: string) => {
-    fetchSuggestions(query);
+  const debounceFetchSuggestions = _debounce(() => {
+    fetchSuggestions();
   }, 1000);
 
   const handleQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
     setQuery(query);
-    debounceFetchSuggestions(query);
+    debounceFetchSuggestions();
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    navigate(`/search?query=${query}`);
+    setQuery("");
   };
 
   return (
@@ -41,7 +50,9 @@ const Search: React.FC<SearchPropTypes> = ({ mobile }) => {
         mobile && "mt-2"
       } ${mobile ? "sm:hidden" : "sm:block"}  sm:max-w-md 
 	 flex-auto bg-white`}>
-      <div className="flex items-center justify-between w-full h-full">
+      <form
+        onSubmit={handleSubmit}
+        className="flex items-center justify-between w-full h-full">
         <input
           onChange={handleQuery}
           className="w-full h-full  py-1 pl-4 border-none outline-none rounded-sm text-sm"
@@ -50,10 +61,10 @@ const Search: React.FC<SearchPropTypes> = ({ mobile }) => {
           placeholder="Search for products, brands and more"
         />
 
-        <div className="h-full flex items-center mr-2">
+        <button type="submit" className="h-full flex items-center mr-2">
           <SearchIcon className="text-[#2874f0]" />
-        </div>
-      </div>
+        </button>
+      </form>
       {query ? (
         <DropDown
           suggestions={suggestions}

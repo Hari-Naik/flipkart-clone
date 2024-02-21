@@ -14,6 +14,8 @@ import Success from "./pages/Success";
 import NotFound from "./pages/NotFound";
 import Footer from "./components/Footer/Footer";
 import ProductsPage from "./pages/ProductsPage";
+import SearchResultsPage from "./pages/SearchResultsPage";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -26,13 +28,14 @@ function App() {
 
   return (
     <>
-      <main className="h-screen w-screen bg-[#f1f2f4] overflow-hidden overflow-y-auto">
+      <main className="h-screen w-screen bg-[##f1f1f1] overflow-hidden overflow-y-auto">
         <BrowserRouter>
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/search" element={<SearchResultsPage />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/success" element={<Success />} />
@@ -40,6 +43,7 @@ function App() {
           </Routes>
           {showLoginModal && <LoginModal />}
           <Footer />
+          <ToastContainer />
         </BrowserRouter>
       </main>
     </>
