@@ -10,7 +10,7 @@ const NotFound = () => {
         alt="not-found"
       />
       <h3 className=" text-lg pt-2 mb-[35px] text-center">
-        Unfortunately the page you are looking for has been moved or deleted
+        Unfortunately the page you are looking for has been moved or deleted.
       </h3>
       <Link
         to="/"
