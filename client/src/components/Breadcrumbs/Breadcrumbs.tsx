@@ -20,13 +20,7 @@ const Breadcrumbs = () => {
       {pathnames.map((path, index) => {
         breadcrumPath += `/${path}`;
         if (index === pathnames.length - 1) {
-          return (
-            <span>
-              <Link to={breadcrumPath} className="hover:text-[#2874f0]">
-                {path}
-              </Link>
-            </span>
-          );
+          return <span>{path}</span>;
         }
         return (
           <span>

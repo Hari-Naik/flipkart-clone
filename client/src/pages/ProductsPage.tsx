@@ -10,6 +10,7 @@ import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import { useSearchParams } from "react-router-dom";
 import SortBy from "../components/Products/SortBy";
 import Products from "../components/Products/Products";
+import Head from "../components/Head/Head";
 
 export const sortBy = [
   { id: "LH", text: "Low to High" },
@@ -72,6 +73,7 @@ const ProductsPage = () => {
 
   return (
     <main className="flex space-x-2 p-2">
+      <Head title="All Products" />
       <Filters
         sortProductsByCategory={sortProductsByCategory}
         sortProductsByRating={sortProductsByRating}

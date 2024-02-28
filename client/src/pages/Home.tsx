@@ -1,10 +1,10 @@
-import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Banner from "../components/Banner/Banner";
 import { useAppSelector } from "../app/hooks";
 
 import Slider from "../components/Slider/Slider";
 import Loading from "../components/Loading/Loading";
+import Head from "../components/Head/Head";
 
 const Home = () => {
   const loading = useAppSelector(state => state.products.loading);
@@ -13,6 +13,10 @@ const Home = () => {
 
   return (
     <main>
+      <Head
+        title="Online Shopping Site for Mobiles, Electronics, Furniture, Grocery,
+      Lifestyle, Books &amp; More. Best Offers!"
+      />
       <Navbar />
       <Banner />
       <Slider title="Best of Electronics" start={0} end={11} />

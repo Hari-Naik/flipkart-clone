@@ -3,9 +3,9 @@ import { useAppSelector } from "../app/hooks";
 
 import WishlistItem from "../components/Wishlist/WishlistItem";
 import EmptyCartView from "../components/Cart/EmptyCartView";
-import { ToastContainer } from "react-toastify";
 import Cookies from "js-cookie";
 import { Navigate } from "react-router";
+import Head from "../components/Head/Head";
 
 const Wishlist = () => {
   const wishlist = useAppSelector(state => state.wishlist.wishlist);
@@ -17,6 +17,7 @@ const Wishlist = () => {
 
   return (
     <section className="w-full h-full">
+      <Head title="My Wishlist" />
       {wishlist.length === 0 && (
         <EmptyCartView
           title="Empty Wishlist"
@@ -35,8 +36,6 @@ const Wishlist = () => {
           ))}
         </div>
       )}
-
-      <ToastContainer />
     </section>
   );
 };

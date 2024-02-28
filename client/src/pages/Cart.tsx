@@ -8,8 +8,9 @@ import EmptyCartView from "../components/Cart/EmptyCartView";
 import { loadStripe } from "@stripe/stripe-js";
 import Cookies from "js-cookie";
 import { setLoginModal } from "../features/login/loginSlice";
-import { ToastContainer } from "react-toastify";
+
 import { successToast } from "../libs/utils";
+import Head from "../components/Head/Head";
 
 const Cart = () => {
   const cart = useAppSelector(state => state.cart.cart);
@@ -59,6 +60,7 @@ const Cart = () => {
 
   return (
     <main className="w-full h-full flex flex-col items-center md:flex-row md:justify-center md:items-start md:space-x-4 overflow-hidden overflow-y-auto pt-6">
+      <Head title="Shopping cart" />
       {cart.length ? (
         <>
           <ul className="w-[96%] md:w-[60%] h-max bg-white shadow-sm">
@@ -85,7 +87,6 @@ const Cart = () => {
           description="Add items to it now."
         />
       )}
-      <ToastContainer />
     </main>
   );
 };
